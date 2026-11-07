@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "kessel"
+version = "0.1.0"
+requires-python = ">=3.11"
+dependencies = []   # packages are installed from requirements.txt by setup.sh
+
+[project.scripts]
+kessel = "cli:app"
+
+[tool.setuptools]
+py-modules = ["cli", "main", "config", "flow_parametrizer", "flow_initializer", "flow_monitor", "flow_analyzer"]
+packages = ["analyzer", "initializer", "monitor", "util"]

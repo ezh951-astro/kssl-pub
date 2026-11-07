@@ -1,0 +1,137 @@
+# no config path interpolation allowed.
+
+inputs:
+
+  sampling_method: lhs # pointwise, grid, lhs
+
+  # only read when sampling_method == 'lhs'
+  n_lhs_samples: 12
+
+  base_paramfiles:
+    ics: '../paramfiles-kessel/params-makegalaxy.txt'
+    sim: '../paramfiles-kessel/params-smuggle.txt'
+
+  discrete_features: # must be of linear scaling
+    - name: 'Virial Velocity'
+      param_name: 'V200'
+      param_type: 'ics'
+      values: [40]
+      dtype: 'float'
+    - name: 'CGM Radius'
+      param_name: 'RC'
+      param_type: 'ics'
+      values: [20]
+      dtype: 'float'
+    - name: 'GasToBaryonRatioInDisk'
+      param_name: 'GasFraction'
+      param_type: 'ics'
+      values: [0.84]
+      dtype: 'float'
+
+  continuous_features: # must be of dtype float
+    - name: 'log SFThresh'
+      param_name: 'DensThreshold'
+      param_type: 'sim'
+      min: -1.0
+      max: 2.0
+      scaling: 'log'
+      npoints: 5   # only read when sampling_method == 'grid'
+    - name: 'log SFEff'
+      param_name: 'SfrEfficiency'
+      param_type: 'sim'
+      min: -2.5
+      max: 0.0
+      scaling: 'log'
+      npoints: 5   # only read when sampling_method == 'grid'
+    - name: 'log zeta'
+      param_name: 'AxialStrength'
+      param_type: 'sim'
+      min: -1.5
+      max: 1.5
+      scaling: 'log'
+    - name: 'log CGMFrac'
+      param_name: 'MHG'
+      param_type: 'ics'
+      min: -3.0
+      max: -1.0
+      scaling: 'log'
+    - name: 'log CGMMetal'
+      param_name: 'HalogasMetallicityInSolar'
+      param_type: 'ics'
+      min: -2.0
+      max: -1.0
+      scaling: 'log'
+    - name: 'VarSNAmp'
+      param_name: 'VarSNAmplitudeDex'
+      param_type: 'sim'
+      min: 0.0
+      max: 0.5
+      scaling: 'linear'
+    - name: 'VarSNProb'
+      param_name: 'VarSNExpProb'
+      param_type: 'sim'
+      min: 0.5
+      max: 1.0
+      scaling: 'linear'
+
+  default_sig_figs_params: 4
+
+snapshot_fields_optional:
+
+  - fieldName: 'P'
+    pType: 0
+    hdf5Name: 'Pressure'
+    fieldColumn: # default empty
+    dType: 'float64' # default float64, could be empty
+    convertUnits: True # this is here as an example. lets try one for like. Carbon or something!
+
+compute:
+  cres: 64 # number of cores
+  cmem: 210 # gb
+  hours: 168
+duration:
+  time_max_myr: 1000
+  no_snapshots: 201
+resolution: # assumed to pair with discrete features.
+  target_mass_res_msun: 1.e4
+  base_softening_pc: 16
+
+snapshot_processing:
+
+  unit_system: 'gal'
+
+  # Particle Cuts
+  gal_rad: 10.0
+  halo_rad: 50.0
+
+  # Morphology
+  gas_box_length: 4.0
+  star_box_length: 2.0
+  morphology_pixels: 120
+
+  # Density Profile
+  n_dens_bins: 100
+  densprof_rmin: 0.03 # kpc
+
+  # Phase Diagram
+  min_log_density: -4.
+  max_log_density: 4.
+  density_pixels: 160
+  min_log_temperature: 1.
+  max_log_temperature: 7.
+  temperature_pixels: 120
+
+  # Star Formation History
+  sfr_timebin_myr: 2.5
+
+outputs:
+
+  logmstar:
+    plot_label: 'log10 mStar'
+    mart: 'logmstar_final'
+  burstiness:
+    plot_label: 'Burstiness'
+    mart: 'burstiness_25myr'
+
+seed: 1234567
+

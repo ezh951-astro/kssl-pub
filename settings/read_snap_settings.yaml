@@ -1,0 +1,225 @@
+mandatory:
+
+# Gas
+
+  - fieldName: 'x'
+    pType: 0
+    hdf5Name: 'Coordinates'
+    fieldColumn: 0
+    convertUnits: True
+
+  - fieldName: 'y'
+    pType: 0
+    hdf5Name: 'Coordinates'
+    fieldColumn: 1
+    convertUnits: True
+
+  - fieldName: 'z'
+    pType: 0
+    hdf5Name: 'Coordinates'
+    fieldColumn: 2
+    convertUnits: True
+
+  - fieldName: 'vx'
+    pType: 0
+    hdf5Name: 'Velocities'
+    fieldColumn: 0
+    convertUnits: True
+
+  - fieldName: 'vy'
+    pType: 0
+    hdf5Name: 'Velocities'
+    fieldColumn: 1
+    convertUnits: True
+
+  - fieldName: 'vz'
+    pType: 0
+    hdf5Name: 'Velocities'
+    fieldColumn: 2
+    convertUnits: True
+
+  - fieldName: 'm'
+    pType: 0
+    hdf5Name: 'Masses'
+    convertUnits: True
+
+  - fieldName: 'Ne'
+    pType: 0
+    hdf5Name: 'ElectronAbundance'
+    convertUnits: False
+
+  - fieldName: 'U'
+    pType: 0
+    hdf5Name: 'InternalEnergy'
+    convertUnits: True
+
+  - fieldName: 'rho'
+    pType: 0
+    hdf5Name: 'Density'
+    convertUnits: True
+
+# Dark Matter
+
+  - fieldName: 'x'
+    pType: 1
+    hdf5Name: 'Coordinates'
+    fieldColumn: 0
+    convertUnits: True
+
+  - fieldName: 'y'
+    pType: 1
+    hdf5Name: 'Coordinates'
+    fieldColumn: 1
+    convertUnits: True
+
+  - fieldName: 'z'
+    pType: 1
+    hdf5Name: 'Coordinates'
+    fieldColumn: 2
+    convertUnits: True
+
+# Stars
+
+  - fieldName: 'x'
+    pType: 4
+    hdf5Name: 'Coordinates'
+    fieldColumn: 0
+    convertUnits: True
+
+  - fieldName: 'y'
+    pType: 4
+    hdf5Name: 'Coordinates'
+    fieldColumn: 1
+    convertUnits: True
+
+  - fieldName: 'z'
+    pType: 4
+    hdf5Name: 'Coordinates'
+    fieldColumn: 2
+    convertUnits: True
+
+  - fieldName: 'vx'
+    pType: 4
+    hdf5Name: 'Velocities'
+    fieldColumn: 0
+    convertUnits: True
+
+  - fieldName: 'vy'
+    pType: 4
+    hdf5Name: 'Velocities'
+    fieldColumn: 1
+    convertUnits: True
+
+  - fieldName: 'vz'
+    pType: 4
+    hdf5Name: 'Velocities'
+    fieldColumn: 2
+    convertUnits: True
+
+  - fieldName: 'm'
+    pType: 4
+    hdf5Name: 'Masses'
+    convertUnits: True
+
+  - fieldName: 'ID'
+    pType: 4
+    hdf5Name: 'ParticleIDs'
+    dType: 'int64'
+    convertUnits: False
+
+  - fieldName: 'tForm'
+    pType: 4
+    hdf5Name: 'GFM_StellarFormationTime'
+    convertUnits: False
+
+# Inert particles 2, 3, 5
+
+  - fieldName: 'x'
+    pType: 2
+    hdf5Name: 'Coordinates'
+    fieldColumn: 0
+    convertUnits: True
+
+  - fieldName: 'y'
+    pType: 2
+    hdf5Name: 'Coordinates'
+    fieldColumn: 1
+    convertUnits: True
+
+  - fieldName: 'z'
+    pType: 2
+    hdf5Name: 'Coordinates'
+    fieldColumn: 2
+    convertUnits: True
+
+  - fieldName: 'vx'
+    pType: 2
+    hdf5Name: 'Velocities'
+    fieldColumn: 0
+    convertUnits: True
+
+  - fieldName: 'vy'
+    pType: 2
+    hdf5Name: 'Velocities'
+    fieldColumn: 1
+    convertUnits: True
+
+  - fieldName: 'vz'
+    pType: 2
+    hdf5Name: 'Velocities'
+    fieldColumn: 2
+    convertUnits: True
+
+  - fieldName: 'x'
+    pType: 3
+    hdf5Name: 'Coordinates'
+    fieldColumn: 0
+    convertUnits: True
+
+  - fieldName: 'y'
+    pType: 3
+    hdf5Name: 'Coordinates'
+    fieldColumn: 1
+    convertUnits: True
+
+  - fieldName: 'z'
+    pType: 3
+    hdf5Name: 'Coordinates'
+    fieldColumn: 2
+    convertUnits: True
+
+  - fieldName: 'vx'
+    pType: 3
+    hdf5Name: 'Velocities'
+    fieldColumn: 0
+    convertUnits: True
+
+  - fieldName: 'vy'
+    pType: 3
+    hdf5Name: 'Velocities'
+    fieldColumn: 1
+    convertUnits: True
+
+  - fieldName: 'vz'
+    pType: 3
+    hdf5Name: 'Velocities'
+    fieldColumn: 2
+    convertUnits: True
+
+  - fieldName: 'x'
+    pType: 5
+    hdf5Name: 'Coordinates'
+    fieldColumn: 0
+    convertUnits: True
+
+  - fieldName: 'y'
+    pType: 5
+    hdf5Name: 'Coordinates'
+    fieldColumn: 1
+    convertUnits: True
+
+  - fieldName: 'z'
+    pType: 5
+    hdf5Name: 'Coordinates'
+    fieldColumn: 2
+    convertUnits: True

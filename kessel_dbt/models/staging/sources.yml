@@ -1,0 +1,20 @@
+version: 2
+
+sources:
+  - name: ingest                    # a logical name for your source layer
+    schema: main                    # replace with the schema your tables live in
+    meta:
+      external_location: "read_parquet('{{ var('source_from_sims') }}/{name}_*.parquet', union_by_name=true)"
+    tables:
+      - name: gas
+        description: "raw gas particle data"
+      - name: dark
+        description: "raw dark matter particle data, coordinates only"
+      - name: star
+        description: "raw star particle data"
+      - name: inert
+        description: "raw data for particle types 2, 3, 5, if they exist"
+      - name: attributes
+        description: "hdf5 field attributes"
+      - name: header
+        description: "snapshot header, not to be confused with the seed headerconfig"

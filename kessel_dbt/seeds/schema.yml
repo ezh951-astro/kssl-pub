@@ -1,0 +1,22 @@
+seeds:
+  - name: cgs_constants
+    config:
+      column_types:
+        grav: double
+        light: double
+        boltzmann: double
+        protonmass: double
+  - name: headerconfig
+    config:
+      column_types:
+        headerName: text
+        hdf5Entry: text
+        hdf5Column: integer
+        hdf5Group: text
+  - name: unit_conversions
+    config:
+      column_types:
+        system_name: text
+        mass_fac: double
+        dist_fac: double
+        vel_fac: double

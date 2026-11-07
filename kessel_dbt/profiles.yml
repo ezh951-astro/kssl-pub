@@ -1,0 +1,7 @@
+kessel_dbt:              # must match the `profile:` line in dbt_project.yml
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: "{{ var('dbt_duckdb_path', 'dev.duckdb') }}"
+      threads: 4

@@ -1,0 +1,70 @@
+version: "Poison" #"Verde"
+compilation: "Friedrich" #"Firehorse"
+
+icgen_executable_name: "MakeDiskGalaxy"
+arepo_executable_name: "Arepo"
+
+paths_arepo: # version, compilation, set, and runid are allowed here
+
+  executables:
+    ic_generator: "../BarbaniICGen/MakeGalaxy/MakeDiskGalaxy"
+    arepo: "../AREPO/${version}/run/${compilation}/Arepo"
+
+  io_files: # w.r.t. root directories of each executable
+
+    icgen_read: ic_gen_params/${set_name}/${runid}.txt  # file
+    icgen_makegalaxy_write: output/${set_name}/IC${runid} # file 
+
+    arepo_ic_read: ICs/${set_name}/IC${runid}.hdf5 # file
+    arepo_param_read: ParamFiles/${set_name}/runparam${runid}.txt # file
+    arepo_job_submit: slurm_scripts/${set_name}/torun${runid}.sh # file
+    arepo_snapshot_write: out/${set_name}/${runid} # directory
+    arepo_usedparams_write: out/${set_name}/${runid}/parameters-usedvalues # file
+    arepo_restartfiles_write: out/${set_name}/${runid}/restartfiles # directory, need not be pre-created
+    arepo_outputlog_write: output_log/${set_name}_${runid}.out # file
+    arepo_errorlog_write: output_log/${set_name}_${runid}.err # file
+
+
+paths_kessel: # it may be that we can't have runid first; well just need to make sure that nothing requires runid at generating input space?
+
+  simulation_params_generated:
+    ics: 'experiments/${set_name}/ic_params' # directory, ensure it does not have an extension
+    sim: 'experiments/${set_name}/sim_params'
+
+  feature_metadata: "experiments/${set_name}/feature_metadata.csv" # file, ensure that it has an extension.
+  feature_values: "experiments/${set_name}/feature_values.csv"
+
+  #run_configs: "experiments/${set_name}/runconfig_${runid}.yaml"
+  #run_states: "experiments/${set_name}/${runid}/state"
+
+  run_states: "experiments/${set_name}/states"
+  source_from_sims_for_dbt: "simdata/${set_name}" # this is w.r.t. kessel; add a .. when putting the variable in dbt, or otherwise resolve path
+  gpr_fits: "experiments/${set_name}/gpr_fits"
+
+
+paths_dbt: # pure dbt paths
+
+  duckdb: "experiments/${set_name}/dbt.duckdb"
+  target: "experiments/${set_name}/dbt_target"
+  log: "experiments/${set_name}/dbt_logs"
+
+
+preset_params: # mandatorily set parameters
+  - param_name: SnapshotFileBase
+    param_value: snapshot
+  - param_name: ICFormat
+    param_value: 3
+  - param_name: SnapFormat
+    param_value: 3
+
+
+system:
+
+  system_name: 'hpcc_ucr'
+  partition_name: 'saleslab'
+  exclude_nodes: 'r[13-14]'
+  cmds_prior_script:
+    - "module load hdf5"
+  cmds_during_script:
+    - "export LD_LIBRARY_PATH=/rhome/ezhan039/shared/local_libs/hdf5/lib:$LD_LIBRARY_PATH"
+  seconds_between_submission: 10

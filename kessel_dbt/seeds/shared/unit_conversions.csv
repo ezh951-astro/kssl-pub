@@ -1,0 +1,4 @@
+system_name,mass_fac,dist_fac,vel_fac
+cgs,1.0,1.0,1.0
+gal,1.989e33,3.08568e21,1.0e5
+hel,1.989e33,1.49597870691e13,474372.0
